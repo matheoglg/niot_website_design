@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/* ---------- Tokens del Club NIoT (paleta oficial, ver AGENTS.md) ----------
+   Cada --color-niot-* genera utilidades: bg-niot-mist, text-niot-ink, border-niot-lilac… */
+@theme {
+  --color-niot-ink: #2a1450;
+  --color-niot-outline: #1e0f3d;
+  --color-niot-deep: #352983;
+  --color-niot-muted: #5e398f;
+  --color-niot-violet: #6e37b8;
+  --color-niot-primary: #8a50f4;
+  --color-niot-body: #8a4fd6;
+  --color-niot-soft: #a874f0;
+  --color-niot-lilac: #c79bff;
+  --color-niot-mist: #f1e9ff;
+  --color-niot-pink: #f06fc8;
+  --color-niot-white: #ffffff;
+
+  --font-sans: var(--font-figtree), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-pixel: var(--font-pixelify), "Courier New", monospace;
+
+  /* Sombras duras, sin desenfoque */
+  --shadow-btn: 4px 4px 0 var(--color-niot-ink);
+  --shadow-btn-hover: 6px 6px 0 var(--color-niot-ink);
+  --shadow-btn-active: 1px 1px 0 var(--color-niot-ink);
+  --shadow-btn-light: 4px 4px 0 var(--color-niot-pink);
+  --shadow-btn-light-hover: 6px 6px 0 var(--color-niot-pink);
+  --shadow-hard: 6px 6px 0 var(--color-niot-violet);
+  --shadow-hard-active: 3px 3px 0 var(--color-niot-violet);
+  --shadow-card: 6px 6px 0 var(--color-niot-lilac);
+  --shadow-card-hover: 5px 5px 0 var(--color-niot-lilac);
+
+  /* Puntos de corte del prototipo (se usan como max-phone:, max-tablet:, max-laptop:) */
+  --breakpoint-phone: 620px;
+  --breakpoint-tablet: 760px;
+  --breakpoint-laptop: 900px;
+}
+
+@utility wrap {
+  width: 100%;
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+@layer base {
+  html {
+    scroll-padding-top: 84px;
+  }
+
+  body {
+    background: var(--color-niot-mist);
+    color: var(--color-niot-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-pixel);
+    font-weight: 600;
+    line-height: 1.1;
+  }
+
+  a {
+    color: var(--color-niot-violet);
+    text-decoration: underline;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-niot-pink);
+    outline-offset: 3px;
+  }
+}
