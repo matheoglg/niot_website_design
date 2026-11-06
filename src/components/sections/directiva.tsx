@@ -3,15 +3,16 @@ import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ExampleTag } from "@/components/ui/tag";
 import { directiva } from "@/content/directiva";
-import { secciones } from "@/content/sitio";
+import { bloquesNosotros } from "@/content/sitio";
 
 // Cada tarjeta lleva una cara distinta de NaYO
 const FACES: NayoExpression[] = ["neutral", "happy", "wink", "surprised"];
 
+/** Bloque "Equipo" de la página Quiénes somos. */
 export function Directiva() {
   return (
-    <Section id="directiva" alt>
-      <SectionHeading {...secciones.directiva} />
+    <Section id="equipo" alt>
+      <SectionHeading {...bloquesNosotros.equipo} />
       <div className="grid grid-cols-4 gap-5 max-laptop:grid-cols-2 max-phone:grid-cols-1">
         {directiva.map((m, i) => (
           <article

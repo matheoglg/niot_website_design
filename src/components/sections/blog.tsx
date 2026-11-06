@@ -1,19 +1,20 @@
 import Link from "next/link";
-import { Section } from "@/components/ui/section";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { PageSection, type SectionMode } from "@/components/ui/section";
 import { ExampleTag, Tag } from "@/components/ui/tag";
 import { posts } from "@/content/blog";
 import { etiquetas, secciones } from "@/content/sitio";
 
-export function Blog() {
+const PREVIEW = 2;
+
+export function Blog({ mode }: { mode: SectionMode }) {
+  const items = mode === "preview" ? posts.slice(0, PREVIEW) : posts;
   return (
-    <Section id="blog">
-      <SectionHeading {...secciones.blog} />
+    <PageSection id="blog" alt mode={mode} seccion={secciones.blog}>
       <div className="grid grid-cols-2 gap-8 max-laptop:grid-cols-1">
-        {posts.map((p) => (
+        {items.map((p) => (
           <article
             key={p.titulo}
-            className="border-2 border-niot-ink bg-niot-white p-[26px] shadow-card"
+            className="border-2 border-niot-ink bg-niot-mist p-[26px] shadow-card"
           >
             <ExampleTag show={p.ejemplo} />
             <Tag soft>{p.categoria}</Tag>
@@ -25,6 +26,6 @@ export function Blog() {
           </article>
         ))}
       </div>
-    </Section>
+    </PageSection>
   );
 }

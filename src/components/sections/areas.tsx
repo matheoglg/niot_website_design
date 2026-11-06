@@ -1,12 +1,13 @@
 import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { areas } from "@/content/areas";
-import { secciones } from "@/content/sitio";
+import { bloquesNosotros } from "@/content/sitio";
 
+/** Bloque "Qué hacemos" de la página Quiénes somos. */
 export function Areas() {
   return (
-    <Section id="areas">
-      <SectionHeading {...secciones.areas} />
+    <Section id="que-hacemos">
+      <SectionHeading {...bloquesNosotros.areas} />
       <div className="grid grid-cols-3 gap-5 max-laptop:grid-cols-2 max-phone:grid-cols-1">
         {areas.map((a) => (
           <article

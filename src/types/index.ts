@@ -3,11 +3,34 @@ type Editable = { ejemplo?: boolean };
 
 export type Enlace = { etiqueta: string; href: string };
 
-export type RedSocial = { nombre: string; url: string };
+export type IconoRed = "instagram" | "x" | "facebook" | "linkedin";
+
+export type RedSocial = { nombre: string; url: string; icono: IconoRed };
 
 export type Foto = { src: string; alt: string };
 
+/** Foto de un álbum. Sin `src` se muestra un relleno pixelado (contenido de ejemplo). */
+export type FotoGaleria = { src?: string; alt: string };
+
+/** Álbum de la galería: las fotos de un evento. */
+export type Album = Editable & {
+  /** Identificador único, en minúsculas y con guiones (p. ej. "taller-de-redes"). */
+  id: string;
+  titulo: string;
+  fecha: string;
+  fotos: FotoGaleria[];
+};
+
 export type CabeceraSeccion = { titulo: string; intro?: string };
+
+/** Sección con página propia: se previsualiza en el inicio y enlaza a su ruta. */
+export type SeccionConPagina = CabeceraSeccion & {
+  /** Nombre corto para el menú. */
+  menu: string;
+  href: string;
+  /** Texto del botón que lleva desde la vista previa a la página completa. */
+  verTodo: string;
+};
 
 export type Area = { titulo: string; descripcion: string };
 

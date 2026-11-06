@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Figtree, Pixelify_Sans } from "next/font/google";
+import { SiteFooter } from "@/components/sections/site-footer";
+import { SiteHeader } from "@/components/sections/site-header";
 import { sitio } from "@/content/sitio";
 import "./globals.css";
 
@@ -16,8 +18,9 @@ const pixelify = Pixelify_Sans({
   weight: ["500", "600", "700"],
 });
 
+// El ícono de la pestaña sale de app/icon.png y app/apple-icon.png (convención de Next)
 export const metadata: Metadata = {
-  title: sitio.titulo,
+  title: { default: sitio.titulo, template: `%s | ${sitio.nombre}` },
   description: sitio.descripcion,
 };
 
@@ -28,7 +31,12 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="es" className={`${figtree.variable} ${pixelify.variable} antialiased`}>
-      <body>{children}</body>
+      {/* Columna a pantalla completa: en páginas cortas el pie se estira y no deja franja clara */}
+      <body className="flex min-h-dvh flex-col">
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }

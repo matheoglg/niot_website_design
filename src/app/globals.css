@@ -34,6 +34,7 @@
   --breakpoint-phone: 620px;
   --breakpoint-tablet: 760px;
   --breakpoint-laptop: 900px;
+  --breakpoint-nav: 1000px; /* debajo de esto el menú del header se pliega */
 }
 
 @utility wrap {
@@ -45,7 +46,7 @@
 
 @layer base {
   html {
-    scroll-padding-top: 84px;
+    scroll-padding-top: 120px; /* alto del header fijo */
   }
 
   body {
@@ -67,6 +68,11 @@
   a {
     color: var(--color-niot-violet);
     text-decoration: underline;
+  }
+
+  /* Con el visor de la galería abierto, la página de fondo no se desplaza */
+  html:has(dialog[open]) {
+    overflow: hidden;
   }
 
   :focus-visible {

@@ -1,19 +1,19 @@
 import Image from "next/image";
-import { Section } from "@/components/ui/section";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { PageSection, type SectionMode } from "@/components/ui/section";
 import { ExampleTag, Tag } from "@/components/ui/tag";
 import { pixelPattern, type PatternName } from "@/components/ui/pixel-pattern";
 import { proyectos } from "@/content/proyectos";
 import { etiquetas, secciones } from "@/content/sitio";
 
+const PREVIEW = 2;
 const thumbClass = "relative aspect-[4/3] border-2 border-niot-ink max-phone:max-w-60";
 
-export function Proyectos() {
+export function Proyectos({ mode }: { mode: SectionMode }) {
+  const items = mode === "preview" ? proyectos.slice(0, PREVIEW) : proyectos;
   return (
-    <Section id="proyectos" alt>
-      <SectionHeading {...secciones.proyectos} />
+    <PageSection id="proyectos" mode={mode} seccion={secciones.proyectos}>
       <div>
-        {proyectos.map((p, i) => (
+        {items.map((p, i) => (
           <article
             key={`${p.titulo}-${i}`}
             className="grid grid-cols-[220px_1fr] gap-7 border-t-2 border-niot-lilac py-[26px] last:border-b-2 max-phone:grid-cols-1 max-phone:gap-3.5"
@@ -45,6 +45,6 @@ export function Proyectos() {
           </article>
         ))}
       </div>
-    </Section>
+    </PageSection>
   );
 }

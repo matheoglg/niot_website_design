@@ -1,15 +1,16 @@
-import { Section } from "@/components/ui/section";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { PageSection, type SectionMode } from "@/components/ui/section";
 import { ExampleTag } from "@/components/ui/tag";
 import { eventos } from "@/content/eventos";
 import { secciones } from "@/content/sitio";
 
-export function Eventos() {
+const PREVIEW = 2;
+
+export function Eventos({ mode }: { mode: SectionMode }) {
+  const items = mode === "preview" ? eventos.slice(0, PREVIEW) : eventos;
   return (
-    <Section id="eventos">
-      <SectionHeading {...secciones.eventos} />
+    <PageSection id="eventos" alt mode={mode} seccion={secciones.eventos}>
       <div>
-        {eventos.map((e) => (
+        {items.map((e) => (
           <article
             key={e.titulo}
             className="grid grid-cols-[200px_1fr] items-baseline gap-7 border-t-2 border-niot-ink py-6 last:border-b-2 max-phone:grid-cols-1 max-phone:gap-3.5"
@@ -23,6 +24,6 @@ export function Eventos() {
           </article>
         ))}
       </div>
-    </Section>
+    </PageSection>
   );
 }
